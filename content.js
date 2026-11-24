@@ -60,7 +60,7 @@ const CONTENT = {
       title: "Segmented VLAN Network (Multi-Site Office)",
       summary: "Designed and maintained VLAN segmentation with ACLs and DHCP reservations for a 50+ user environment.",
       tags: ["TP-Link Omada", "VLAN", "ACL", "802.1Q"],
-      link: "", linkLabel: "Read the write-up"
+      link: "projects/vlan-network.html", linkLabel: "Read the write-up"
     },
     {
       title: "CCTV Deployment on Construction Sites",

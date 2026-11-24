@@ -24,3 +24,11 @@ section{padding:56px 0 8px}h2{font-size:1.6rem;margin:0 0 20px}h2::after{content
 .job{border-left:3px solid var(--accent);padding:0 0 22px 18px;margin-left:4px}.job h3{margin:0}.job .meta{color:var(--muted);font-size:.9rem;margin:2px 0 8px}.job ul{margin:0;padding-left:18px}
 footer{padding-top:48px;padding-bottom:40px;color:var(--muted);font-size:.9rem;text-align:center}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.article{max-width:760px;margin:0 auto;padding:32px 20px 24px}.article h1{font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.2;margin:8px 0}
+.article h2{font-size:1.3rem;margin:36px 0 12px}.article .meta{color:var(--muted);font-size:.95rem}.article li{margin:4px 0}
+.note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;color:var(--muted);font-size:.92rem}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--surface)}
+.diagram{width:100%;height:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.diagram .box{fill:var(--bg);stroke:var(--border);stroke-width:1.5}.diagram .hi{fill:var(--bg);stroke:var(--accent);stroke-width:2}
+.diagram .t{fill:var(--text);font:600 13px system-ui,sans-serif}.diagram .m{fill:var(--muted);font:12px system-ui,sans-serif}
+.diagram .ln{stroke:var(--muted);stroke-width:1.5;fill:none}.diagram .ok{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:5 4}
