@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'self'; form-action 'none'">
+  <title>Segmented VLAN Network | Arjude Catedrilla</title>
+  <meta name="description" content="Project write-up: a segmented VLAN network with ACLs for a 50+ user office.">
+  <link rel="stylesheet" href="../style.css">
+  <script src="page.js"></script>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="../index.html">← Arjude Catedrilla</a>
+    <nav aria-label="Main"><a href="../index.html#projects">All projects</a></nav>
+  </header>
+  <main class="article">
+    <p class="meta">Networking project · Implemented May 2026 · Documentation updated October 2026 (v2.0)</p>
+    <h1>Segmented VLAN Network for a Multi-Department Office</h1>
+    <p class="note">Details are generalized. Addresses, device names, department names, and the employer are intentionally left out.</p>
+
+    <h2>Overview</h2>
+    <p>I planned, configured, and documented a segmented network for an office of 50+ users, using a TP-Link Omada router and managed switch.</p>
+
+    <h2>The problem</h2>
+    <p>The office ran on the ISP-provided router and unmanaged switches. That typically means one flat network where every device shares the same space, with no way to separate departments, isolate guests, or control who can reach what.</p>
+
+    <h2>The design</h2>
+    <p>Five VLANs by role: IT admin, two departments, management, and guest. The router does the routing and is the only DHCP server. The switch uplink is a trunk, end-device ports are untagged access ports, and the management port carries the two department VLANs tagged, so managers can reach both departments without merging them.</p>
+
+    <svg class="diagram" viewBox="0 0 720 400" role="img" aria-labelledby="dt dd">
+      <title id="dt">Simplified network diagram</title>
+      <desc id="dd">Internet connects to a router and firewall, then a managed core switch, which serves five VLANs: IT admin, Department A, Department B, Management, and Guest. Management can reach both departments. Guest is isolated.</desc>
+      <rect class="box" x="290" y="14" width="140" height="44" rx="8"/><text class="t" x="360" y="42" text-anchor="middle">Internet</text>
+      <line class="ln" x1="360" y1="58" x2="360" y2="86"/>
+      <rect class="hi" x="260" y="86" width="200" height="54" rx="8"/><text class="t" x="360" y="110" text-anchor="middle">Router / Firewall</text><text class="m" x="360" y="128" text-anchor="middle">routing · DHCP · ACLs</text>
+      <line class="ln" x1="360" y1="140" x2="360" y2="168"/>
+      <text class="m" x="372" y="159">trunk</text>
+      <rect class="hi" x="260" y="168" width="200" height="54" rx="8"/><text class="t" x="360" y="192" text-anchor="middle">Managed Core Switch</text><text class="m" x="360" y="210" text-anchor="middle">VLAN switching</text>
+      <path class="ln" d="M360 222 V250 M72 250 H648 M72 250 V280 M216 250 V280 M360 250 V280 M504 250 V280 M648 250 V280"/>
+      <rect class="box" x="12" y="280" width="120" height="54" rx="8"/><text class="t" x="72" y="304" text-anchor="middle">IT Admin</text><text class="m" x="72" y="322" text-anchor="middle">VLAN A</text>
+      <rect class="box" x="156" y="280" width="120" height="54" rx="8"/><text class="t" x="216" y="304" text-anchor="middle">Department A</text><text class="m" x="216" y="322" text-anchor="middle">VLAN B</text>
+      <rect class="box" x="300" y="280" width="120" height="54" rx="8"/><text class="t" x="360" y="304" text-anchor="middle">Department B</text><text class="m" x="360" y="322" text-anchor="middle">VLAN C</text>
+      <rect class="hi" x="444" y="280" width="120" height="54" rx="8"/><text class="t" x="504" y="304" text-anchor="middle">Management</text><text class="m" x="504" y="322" text-anchor="middle">VLAN D</text>
+      <rect class="box" x="588" y="280" width="120" height="54" rx="8"/><text class="t" x="648" y="304" text-anchor="middle">Guest</text><text class="m" x="648" y="322" text-anchor="middle">VLAN E · isolated</text>
+      <path class="ok" d="M504 334 V362 H216 V334 M360 362 V334"/>
+      <text class="m" x="360" y="384" text-anchor="middle">Dashed: Management is permitted to reach both departments</text>
+    </svg>
+
+    <h2>Access control</h2>
+    <p>Eleven ACL rules, processed top-down with the first match winning, so permit rules sit above deny rules. Departments are isolated from each other and from IT admin, and guests are fully isolated. Management can reach both departments. A single-device exception uses a /32 IP group, backed by a DHCP reservation so the address never changes.</p>
+
+    <h2>Three management modes</h2>
+    <p>I ran the same network in standalone, cloud, and software-controller modes and documented the tradeoffs.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Feature</th><th>Standalone</th><th>Cloud</th><th>Software controller</th></tr></thead>
+      <tbody>
+        <tr><td>Per-device ACL rules</td><td>No (subnet only)</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Remote access</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Extra hardware</td><td>None</td><td>None</td><td>Always-on host</td></tr>
+        <tr><td>Setup effort</td><td>Low</td><td>Very low</td><td>Medium</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Lessons learned</h2>
+    <ul>
+      <li>Only one DHCP server per subnet. A second one causes address conflicts and routing failures.</li>
+      <li>The controller’s configured IP must match its real address, or devices show as disconnected while the network keeps working.</li>
+      <li>/24 targets a whole subnet and /32 targets one device. Mixing them up grants far more access than intended.</li>
+      <li>Run <code>ipconfig /release</code> before <code>/renew</code>, or the DHCP reservation is ignored.</li>
+      <li>Boot the router first, then the switch.</li>
+      <li>Back up before any reset, and test with a ping after every single change.</li>
+    </ul>
+
+    <h2>Result</h2>
+    <ul>
+      <li>Departments and guests are now separated, with controlled access for management.</li>
+      <li>One DHCP server serves every VLAN, with reservations for key devices.</li>
+      <li>The documentation was complete enough that I rebuilt the whole configuration from it when I moved back to standalone mode.</li>
+    </ul>
+
+    <h2>My role</h2>
+    <p>I planned the network, installed and configured the equipment, and wrote the documentation. I used an AI assistant to help work out the VLAN and ACL configuration, then tested and refined it myself.</p>
+
+    <h2>What I would improve</h2>
+    <p>A dedicated always-on controller, DHCP reservations for all key devices, and DNS filtering per VLAN.</p>
+
+    <p><a href="../index.html#projects">← Back to projects</a></p>
+  </main>
+  <footer><p>© Arjude Catedrilla</p></footer>
+</body>
+</html>
