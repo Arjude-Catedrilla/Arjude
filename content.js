@@ -1,90 +1,102 @@
 // ============================================================
 //  EDIT THIS FILE ONLY. The page builds itself from it.
-//  To add something later, copy an existing block and edit it.
-//  Empty lists (certifications, guides) hide their section.
+//  Write the text in your own voice. Empty lists hide their section.
 // ============================================================
 const CONTENT = {
   name: "Arjude Catedrilla",
-  title: "IT Assistant | Networking & End-User Support",
-  tagline: "I keep offices, networks, and people connected and productive.",
+  greeting: "Hi, I’m Arjude",
+  title: "IT Professional, Gamer, Illustrated Fiction Lover",
+  tagline: "I look after networks, computers, and CCTV for work, and I game on my Steam Deck for fun.",
   location: "Aklan, Philippines",
   resume: "",
+  // Steam Deck screen shows these, shuffled. Use 16:10 images (e.g. 1280x800), under ~80 KB each.
+  // Put files in images/games/ and list them here. Remove the placeholders when you add yours.
+  deck: {
+    alt: "A handheld gaming console showing game art that changes every few seconds",
+    games: [
+      { src: "images/games/placeholder-1.jpg" },
+      { src: "images/games/placeholder-2.jpg" },
+      { src: "images/games/placeholder-3.jpg" },
+      { src: "images/games/placeholder-4.jpg" },
+      { src: "images/games/placeholder-5.jpg" }
+    ]
+  },
 
-  about: [
-    "IT Assistant with 2+ years of hands-on experience supporting hardware, software, networking, and CCTV systems across multiple sites.",
-    "I enjoy solving practical problems, picking up new technology quickly, and I am growing toward enterprise IT, network infrastructure, and server administration. Outside work, I game on Steam Deck and PC."
+  whatIDoIntro: "I spend most of my time on screens and hardware. When I’m not on one, I’m probably fixing a connection somewhere.",
+  // icon options: headset, wifi, server, camera, monitor, gamepad
+  whatIDo: [
+    { icon: "headset", title: "IT Support", text: "Windows setup, onboarding, printers, and day-to-day help for staff." },
+    { icon: "wifi", title: "Networking", text: "VLANs, managed switches, ACLs, and DHCP." },
+    { icon: "server", title: "Hardware", text: "Building, upgrading, and repairing PCs and peripherals." },
+    { icon: "camera", title: "CCTV", text: "Camera installation, cabling, and recorder setup." }
   ],
 
-  whatIDo: [
-    { icon: "🖥️", title: "IT Support", text: "Windows deployment, onboarding, and day-to-day end-user help." },
-    { icon: "🌐", title: "Networking", text: "VLANs, managed switches, inter-VLAN ACLs, and DHCP." },
-    { icon: "🔧", title: "Hardware", text: "PC assembly, upgrades, printers, and peripherals." },
-    { icon: "📹", title: "CCTV & Surveillance", text: "Camera placement, cabling, and DVR setup." },
-    { icon: "🎮", title: "Gaming Tech", text: "Steam Deck and console tips. Guides coming soon." }
+
+  about: [
+    "I’m an IT assistant from Aklan with 2+ years of hands-on experience in hardware, software, networking, and CCTV. I enjoy fixing practical problems and learning new tech as I go, and I’m aiming for enterprise IT, network infrastructure, and server administration.",
+    "Away from work, I’m usually on my Steam Deck. Roguelikes are my favorite genre, and I’m a big fan of illustrated fiction too."
+  ],
+
+  projects: [
+    {
+      title: "Segmented VLAN Network for an Office",
+      summary: "Designed and documented VLAN segmentation with ACLs and DHCP reservations for a 50+ user office.",
+      tags: ["TP-Link Omada", "VLAN", "ACL", "802.1Q"],
+      featured: true,
+      outcomes: [
+        "Departments and guests are isolated, with controlled access for management",
+        "One DHCP server for every VLAN, with reservations for key devices",
+        "I rebuilt the whole configuration from my own documentation"
+      ],
+      link: "projects/vlan-network.html", linkLabel: "Read the case study"
+    },
+    {
+      title: "CCTV Installation and Maintenance",
+      summary: "Camera placement, cabling, and recorder setup for active sites.",
+      tags: ["CCTV", "DVR", "Cabling"],
+      link: "", linkLabel: ""
+    },
+    {
+      title: "Geospatial Data Validation",
+      summary: "Validated geospatial datasets for 17 municipalities used in official reporting.",
+      tags: ["QGIS", "Data Integrity"],
+      link: "", linkLabel: ""
+    }
   ],
 
   experience: [
     {
       role: "IT Assistant", org: "Mevbuilt Incorporated", period: "Apr 2024 – Present",
       points: [
-        "Managed day-to-day IT operations across three site offices, supporting 50+ users.",
+        "Run day-to-day IT across three site offices, supporting 50+ users.",
         "Configured a segmented VLAN network on TP-Link Omada: port profiles, inter-VLAN ACLs, DHCP reservations, 802.1Q trunk and access ports.",
-        "Installed and maintained CCTV systems on active construction sites.",
-        "Handled Windows deployment and setup of computers, printers, and peripherals for staff onboarding."
+        "Installed and maintain CCTV systems on active sites.",
+        "Handle Windows deployment and setup of computers, printers, and peripherals for onboarding."
       ]
     },
     {
       role: "Map Data Processor", org: "Philippine Statistics Authority", period: "Aug 2023 – May 2024",
       points: [
         "Processed and validated geospatial datasets for all 17 municipalities of Aklan using QGIS.",
-        "Provided on-the-spot technical support that kept the data pipeline on schedule."
+        "Gave on-the-spot technical support that kept the data pipeline on schedule."
       ]
     },
     {
       role: "Technical Support Intern", org: "Philippine Statistics Authority", period: "Mar 2023 – May 2023",
-      points: ["Resolved hardware and software issues for staff during peak operational periods."]
+      points: ["Resolved hardware and software issues for staff during peak periods."]
     }
   ],
 
   skills: [
-    { group: "Networking", items: ["LAN/WAN", "VLANs", "Managed Switches", "Inter-VLAN Routing", "ACLs", "DHCP Reservation", "Troubleshooting"] },
-    { group: "Hardware", items: ["Desktop & Mobile Support", "PC Assembly", "Upgrades & Maintenance", "Printers & Peripherals"] },
-    { group: "Software", items: ["Windows Deployment", "Microsoft Office", "Google Workspace", "Zoom", "QGIS"] },
-    { group: "IT Operations", items: ["Asset Inventory", "Equipment Deployment", "End-User Support"] },
-    { group: "Surveillance", items: ["Analog CCTV", "DVR Configuration", "Matterport 3D Scanning", "DJI Drone Operations"] }
+    { group: "Networking", items: ["LAN/WAN", "VLANs", "Managed switches", "Inter-VLAN routing", "ACLs", "DHCP reservation", "Troubleshooting"] },
+    { group: "Hardware", items: ["Desktop and mobile support", "PC assembly", "Upgrades and maintenance", "Printers and peripherals"] },
+    { group: "Software", items: ["Windows deployment", "Microsoft Office", "Google Workspace", "Zoom", "QGIS"] },
+    { group: "Operations", items: ["Asset inventory", "Equipment deployment", "End-user support"] },
+    { group: "Surveillance", items: ["Analog CCTV", "DVR configuration", "Matterport 3D scanning", "DJI drone operations"] }
   ],
 
-  // Short summaries from your experience. Expand with diagrams or write-ups later.
-  projects: [
-    {
-      title: "Segmented VLAN Network (Multi-Site Office)",
-      summary: "Designed and maintained VLAN segmentation with ACLs and DHCP reservations for a 50+ user environment.",
-      tags: ["TP-Link Omada", "VLAN", "ACL", "802.1Q"],
-      link: "projects/vlan-network.html", linkLabel: "Read the write-up"
-    },
-    {
-      title: "CCTV Deployment on Construction Sites",
-      summary: "Planned camera placement, ran cabling, and configured DVRs for active job sites.",
-      tags: ["CCTV", "DVR", "Cabling"],
-      link: "", linkLabel: "Read the write-up"
-    },
-    {
-      title: "Aklan Geospatial Data Validation",
-      summary: "Validated geospatial datasets for 17 municipalities used in official PSA reporting.",
-      tags: ["QGIS", "Data Integrity"],
-      link: "", linkLabel: "Read the write-up"
-    }
-  ],
-
-  certifications: [
-    // { name: "CompTIA A+", issuer: "CompTIA", year: "2026", link: "" }
-  ],
-
-  education: [
-    { name: "BS Information Technology", school: "STI College Capitol Site, Kalibo, Aklan", period: "2019 – 2023" }
-  ],
-
-  // Later: { title: "Fix Steam Deck Wi-Fi Drops", category: "Gaming", tags: ["steamdeck"], link: "guides/steamdeck-wifi/" }
+  certifications: [],
+  education: [{ name: "BS Information Technology", school: "STI College Capitol Site, Kalibo, Aklan", period: "2019 – 2023" }],
   guides: [],
 
   contact: {
