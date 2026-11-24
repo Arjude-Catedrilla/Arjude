@@ -8,7 +8,7 @@ const CONTENT = {
   title: "IT Assistant | Networking & End-User Support",
   tagline: "I keep offices, networks, and people connected and productive.",
   location: "Aklan, Philippines",
-  resume: "resume.pdf",
+  resume: "",
 
   about: [
     "IT Assistant with 2+ years of hands-on experience supporting hardware, software, networking, and CCTV systems across multiple sites.",
