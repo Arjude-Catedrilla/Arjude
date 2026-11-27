@@ -15,18 +15,17 @@ const CONTENT = {
       { src: "images/games/placeholder-1.jpg" },
       { src: "images/games/placeholder-2.jpg" },
       { src: "images/games/placeholder-3.jpg" },
-      { src: "images/games/placeholder-4.jpg" },
-      { src: "images/games/placeholder-5.jpg" },
+      { src: "images/games/placeholder-4.jpg" }
     ]
   },
 
   whatIDoIntro: "I spend most of my time on screens and hardware. When I’m not on one, I’m probably fixing a connection somewhere.",
-  // icon options (Lucide): headset, wifi, server, cctv, monitor, gamepad, code, shield, drive, wrench, router, network, cpu, cloud, window, remote, graphics
+  // icon options (Lucide): headset, wifi, server, cctv, monitor, gamepad, code, shield, drive, wrench, router, network, cpu, cloud, windows, remote, graphics
   whatIDo: [
     { icon: "headset", title: "IT Support", text: "Onboarding, printers, and day-to-day help for staff." },
     { icon: "wifi", title: "Networking", text: "VLANs, managed switches, ACLs, and DHCP." },
-    { icon: "cpu", title: "Hardware & Software", text: "Setup, upgrades, and repairs for PCs and peripherals." },
-    { icon: "window", title: "Windows", text: "Deployment, setup, and troubleshooting." },
+    { icon: "server", title: "Hardware & Software", text: "Setup, upgrades, and repairs for PCs and peripherals." },
+    { icon: "windows", title: "Windows", text: "Deployment, setup, and troubleshooting." },
     { icon: "remote", title: "Remote Support", text: "Fixing computer problems from a distance." },
     { icon: "cctv", title: "CCTV", text: "Camera installation, cabling, and recorder setup." },
     { icon: "code", title: "Code", text: "Small scripts and websites, including this one." },
@@ -71,9 +70,10 @@ const CONTENT = {
   // Optional photo for About (square works best). Example: { src: "images/me.jpg", alt: "Arjude" }
   aboutImage: { src: "", alt: "" },
   about: [
-    "Hello, Arjude here! an IT enthusiast from the Philippines. I am a graduate of STI College with a degree in Information Technology",
-    "Away from work, I’m usually on my Steam Deck."
+    "Hello, Arjude C here! An IT enthusiast from the Philippines. I am a graduate of STI College with a degree in Information Technology.",
+    "Away from work, I’m usually on my Steam Deck, or browsing the web for the latest tech news."
   ],
+  aboutLinkText: "See my corporate profile",   // links to your LinkedIn (contact.linkedin below)
 
   contact: {
     email: "catedrillaarjude@gmail.com",
