@@ -1,6 +1,5 @@
 // ============================================================
-//  EDIT THIS FILE ONLY. The page builds itself from it.
-//  Write the text in your own voice. Empty lists hide their section.
+//  EDIT THIS FILE ONLY. The pages build themselves from it.
 // ============================================================
 const CONTENT = {
   name: "Arjude Catedrilla",
@@ -8,9 +7,8 @@ const CONTENT = {
   title: "IT Professional, Gamer, Illustrated Fiction Lover",
   tagline: "I look after networks, computers, and CCTV for work, and I game on my Steam Deck for fun.",
   location: "Aklan, Philippines",
-  resume: "",
-  // Steam Deck screen shows these, shuffled. Use 16:10 images (e.g. 1280x800), under ~80 KB each.
-  // Put files in images/games/ and list them here. Remove the placeholders when you add yours.
+
+  // Steam Deck screen shows these, shuffled. Use 16:10 images (about 960x600), JPG or PNG.
   deck: {
     alt: "A handheld gaming console showing game art that changes every few seconds",
     games: [
@@ -18,90 +16,67 @@ const CONTENT = {
       { src: "images/games/placeholder-2.jpg" },
       { src: "images/games/placeholder-3.jpg" },
       { src: "images/games/placeholder-4.jpg" },
-      { src: "images/games/placeholder-5.jpg" }
+      { src: "images/games/placeholder-5.jpg" },
     ]
   },
 
   whatIDoIntro: "I spend most of my time on screens and hardware. When I’m not on one, I’m probably fixing a connection somewhere.",
-  // icon options: headset, wifi, server, camera, monitor, gamepad
+  // icon options (Lucide): headset, wifi, server, cctv, monitor, gamepad, code, shield, drive, wrench, router, network, cpu, cloud, window, remote, graphics
   whatIDo: [
-    { icon: "headset", title: "IT Support", text: "Windows setup, onboarding, printers, and day-to-day help for staff." },
+    { icon: "headset", title: "IT Support", text: "Onboarding, printers, and day-to-day help for staff." },
     { icon: "wifi", title: "Networking", text: "VLANs, managed switches, ACLs, and DHCP." },
-    { icon: "server", title: "Hardware", text: "Building, upgrading, and repairing PCs and peripherals." },
-    { icon: "camera", title: "CCTV", text: "Camera installation, cabling, and recorder setup." }
+    { icon: "cpu", title: "Hardware & Software", text: "Setup, upgrades, and repairs for PCs and peripherals." },
+    { icon: "window", title: "Windows", text: "Deployment, setup, and troubleshooting." },
+    { icon: "remote", title: "Remote Support", text: "Fixing computer problems from a distance." },
+    { icon: "cctv", title: "CCTV", text: "Camera installation, cabling, and recorder setup." },
+    { icon: "code", title: "Code", text: "Small scripts and websites, including this one." },
+    { icon: "graphics", title: "Graphics", text: "Graphic design and image editing." }
   ],
 
-
-  about: [
-    "I’m an IT assistant from Aklan with 2+ years of hands-on experience in hardware, software, networking, and CCTV. I enjoy fixing practical problems and learning new tech as I go, and I’m aiming for enterprise IT, network infrastructure, and server administration.",
-    "Away from work, I’m usually on my Steam Deck. Roguelikes are my favorite genre, and I’m a big fan of illustrated fiction too."
-  ],
-
-  projects: [
-    {
-      title: "Segmented VLAN Network for an Office",
-      summary: "Designed and documented VLAN segmentation with ACLs and DHCP reservations for a 50+ user office.",
-      tags: ["TP-Link Omada", "VLAN", "ACL", "802.1Q"],
-      featured: true,
-      outcomes: [
-        "Departments and guests are isolated, with controlled access for management",
-        "One DHCP server for every VLAN, with reservations for key devices",
-        "I rebuilt the whole configuration from my own documentation"
-      ],
-      link: "projects/vlan-network.html", linkLabel: "Read the case study"
-    },
-    {
-      title: "CCTV Installation and Maintenance",
-      summary: "Camera placement, cabling, and recorder setup for active sites.",
-      tags: ["CCTV", "DVR", "Cabling"],
-      link: "", linkLabel: ""
-    },
-    {
-      title: "Geospatial Data Validation",
-      summary: "Validated geospatial datasets for 17 municipalities used in official reporting.",
-      tags: ["QGIS", "Data Integrity"],
-      link: "", linkLabel: ""
-    }
-  ],
-
-  experience: [
-    {
-      role: "IT Assistant", org: "Mevbuilt Incorporated", period: "Apr 2024 – Present",
-      points: [
-        "Run day-to-day IT across three site offices, supporting 50+ users.",
-        "Configured a segmented VLAN network on TP-Link Omada: port profiles, inter-VLAN ACLs, DHCP reservations, 802.1Q trunk and access ports.",
-        "Installed and maintain CCTV systems on active sites.",
-        "Handle Windows deployment and setup of computers, printers, and peripherals for onboarding."
-      ]
-    },
-    {
-      role: "Map Data Processor", org: "Philippine Statistics Authority", period: "Aug 2023 – May 2024",
-      points: [
-        "Processed and validated geospatial datasets for all 17 municipalities of Aklan using QGIS.",
-        "Gave on-the-spot technical support that kept the data pipeline on schedule."
-      ]
-    },
-    {
-      role: "Technical Support Intern", org: "Philippine Statistics Authority", period: "Mar 2023 – May 2023",
-      points: ["Resolved hardware and software issues for staff during peak periods."]
-    }
-  ],
-
-  skills: [
-    { group: "Networking", items: ["LAN/WAN", "VLANs", "Managed switches", "Inter-VLAN routing", "ACLs", "DHCP reservation", "Troubleshooting"] },
-    { group: "Hardware", items: ["Desktop and mobile support", "PC assembly", "Upgrades and maintenance", "Printers and peripherals"] },
-    { group: "Software", items: ["Windows deployment", "Microsoft Office", "Google Workspace", "Zoom", "QGIS"] },
-    { group: "Operations", items: ["Asset inventory", "Equipment deployment", "End-user support"] },
-    { group: "Surveillance", items: ["Analog CCTV", "DVR configuration", "Matterport 3D scanning", "DJI drone operations"] }
-  ],
+  // FIELD NOTES: shown as two tiles on the home page, and as a page (notes.html) with two tabs.
+  // Each track has topics (the dropdowns). Each topic has entries. Empty topics show "coming soon".
+  // To add a guide: copy guides/_template.html, then add a line under the right topic's entries:
+  //   { title: "Fix Steam Deck Wi-Fi Drops", summary: "One sentence.", tags: ["wifi"], link: "guides/steamdeck-wifi.html" }
+  notes: {
+    title: "Field Notes",
+    intro: "What I’ve worked on, what it taught me, and guides for the games I play.",
+    tracks: [
+      {
+        id: "work", icon: "wrench", title: "Work & Lessons",
+        teaser: "What I’ve worked on and what it taught me.",
+        intro: "Projects from my IT work, with the lessons and mistakes worth sharing.",
+        topics: [
+          { name: "Networking", entries: [
+            { title: "Segmented VLAN network for an office", summary: "The design, the access rules, three management modes, and the mistakes to avoid.", tags: ["TP-Link Omada", "VLAN", "ACL"], link: "projects/vlan-network.html" }
+          ] },
+          { name: "IT Support", entries: [] }
+        ]
+      },
+      {
+        id: "games", icon: "gamepad", title: "Game Guides",
+        teaser: "Tips and how-tos for the games I play.",
+        intro: "Guides for Steam Deck, PC, and mobile, written the way I’d explain them to a friend.",
+        topics: [
+          { name: "Steam Deck", entries: [] },
+          { name: "Computer", entries: [] },
+          { name: "Mobile", entries: [] }
+        ]
+      }
+    ]
+  },
 
   certifications: [],
-  education: [{ name: "BS Information Technology", school: "STI College Capitol Site, Kalibo, Aklan", period: "2019 – 2023" }],
-  guides: [],
+  // { name: "CompTIA A+", issuer: "CompTIA", year: "2026" }
+
+  // Optional photo for About (square works best). Example: { src: "images/me.jpg", alt: "Arjude" }
+  aboutImage: { src: "", alt: "" },
+  about: [
+    "Hello, Arjude here! an IT enthusiast from the Philippines. I am a graduate of STI College with a degree in Information Technology",
+    "Away from work, I’m usually on my Steam Deck."
+  ],
 
   contact: {
     email: "catedrillaarjude@gmail.com",
-    linkedin: "https://www.linkedin.com/in/arjude-catedrilla",
-    github: "https://github.com/Arjude-Catedrilla"
+    linkedin: "https://www.linkedin.com/in/arjude-catedrilla"
   }
 };
