@@ -5,7 +5,7 @@ const CONTENT = {
   name: "Arjude Catedrilla",
   greeting: "Hi, I’m Arjude",
   title: "IT Professional, Gamer, Illustrated Fiction Lover",
-  tagline: "I look after networks, computers, and CCTV for work, and I game on my Steam Deck for fun.",
+  //tagline: "I look after networks, computers, and CCTV for work, and I game on my Steam Deck for fun.",
   location: "Aklan, Philippines",
 
   // Steam Deck screen shows these, shuffled. Use 16:10 images (about 960x600), JPG or PNG.
