@@ -88,9 +88,9 @@ section .intro{text-align:center;color:var(--muted);max-width:38em;margin:-8px a
 }
 
 /* What I Do hover, after stefan.ph: the title (and icon) light up in the accent color */
-.do-item h3,.do-ico svg{transition:color .25s ease,transform .25s ease}
+.do-item h3,.do-ico svg{transition:color .4s ease,transform .4s ease}
 .do-item:hover h3,.do-item:hover .do-ico svg{color:var(--accent)}
-.do-item:hover .do-ico svg{transform:translateY(-3px)}
+.do-item:hover .do-ico svg{transform:translateY(-6px)}
 @media (prefers-reduced-motion:reduce){.do-item:hover .do-ico svg{transform:none}}
 
 /* Reveal on scroll, like stefan.ph: sections fade in as they come into view */
@@ -134,3 +134,13 @@ section .intro{text-align:center;color:var(--muted);max-width:38em;margin:-8px a
 
 /* Filled brand logo (Windows, from Devicon) drawn in white like the line icons */
 .do-ico svg.ico-fill{fill:currentColor;stroke:none}
+
+/* Name in the center of the top bar: large and bold */
+.nav.split .brand{font-size:2.3rem;font-weight:700;letter-spacing:.06em;line-height:1.05}
+@media (max-width:760px){.nav.split .brand{font-size:1.7rem}}
+
+/* What I Do: any number of tiles. 4 per row, and an incomplete last row stays centered */
+.do-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.do-flex .do-item{flex:0 0 calc((100% - 66px) / 4);min-width:0}
+@media (max-width:900px){.do-flex .do-item{flex-basis:calc((100% - 22px) / 2)}}
+@media (max-width:768px){.do-flex .do-item{flex-basis:100%}}
