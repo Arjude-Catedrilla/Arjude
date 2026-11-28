@@ -15,7 +15,8 @@ const CONTENT = {
       { src: "images/games/placeholder-1.jpg" },
       { src: "images/games/placeholder-2.jpg" },
       { src: "images/games/placeholder-3.jpg" },
-      { src: "images/games/placeholder-4.jpg" }
+      { src: "images/games/placeholder-4.jpg" }, 
+      { src: "images/games/placeholder-5.jpg" }
     ]
   },
 
